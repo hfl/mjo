@@ -1,0 +1,6 @@
+<h1>Editing Article</h1>
+
+<%= render 'form', article: @article %>
+
+<%= link_to 'Show', [:admin, @article.issue.journal, @article.issue, @article] %> |
+<%= link_to 'Back', admin_journal_issue_articles_path(@article.issue.journal, @article.issue) %>

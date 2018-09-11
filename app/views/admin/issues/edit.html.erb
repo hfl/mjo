@@ -1,0 +1,6 @@
+<h1>Editing Issue</h1>
+
+<%= render 'form', issue: @issue %>
+
+<%= link_to 'Show', admin_journal_issue_path(@issue.journal, @issue) %> |
+<%= link_to 'Back', admin_journal_issues_path(@issue) %>

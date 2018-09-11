@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Keywords</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Article</th>
+      <th>Keyword</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keywords.each do |keyword| %>
+      <tr>
+        <td><%= keyword.article %></td>
+        <td><%= keyword.keyword %></td>
+        <td><%= link_to 'Show', admin_journal_issue_article_keyword_path(keyword.article.issue.journal, keyword.article.issue, keyword.article, keyword) %></td>
+        <td><%= link_to 'Edit', edit_admin_journal_issue_article_keyword_path(keyword.article.issue.journal, keyword.article.issue, keyword.article, keyword) %></td>
+        <td><%= link_to 'Destroy', [:admin, keyword.article.issue.journal, keyword.article.issue, keyword.article, keyword], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Keyword', new_admin_journal_issue_article_keyword_path(@article.issue.journal, @article.issue, @article) %>

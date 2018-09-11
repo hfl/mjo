@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cover:</strong>
+  <%= image_tag @issue.cover.variant(resize: "100x100") %>
+</p>
+
+<p>
+  <strong>Journal:</strong>
+  <%= @issue.journal %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @issue.volume %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @issue.number %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @issue.year %>
+</p>
+
+<p>
+  <strong>Articles:</strong>
+  <% @issue.articles.each do |article| %>
+  <%= link_to article.title, admin_journal_issue_article_path(@issue.journal, @issue, article) %><br>
+  <% end %>
+  <br>
+  <%= link_to 'New Article', new_admin_journal_issue_article_path(@issue.journal, @issue) %>
+</p>
+
+<%= link_to 'Edit', edit_admin_journal_issue_path(@issue.journal, @issue) %> |
+<%= link_to 'Back', admin_journal_issues_path(@issue.journal) %>

@@ -1,0 +1,6 @@
+<h1>Editing Author</h1>
+
+<%= render 'form', author: @author %>
+
+<%= link_to 'Show', [:admin, @author.article.issue.journal, @author.article.issue, @author.article, @author] %> |
+<%= link_to 'Back', admin_journal_issue_article_authors_path(@author.article.issue.journal, @author.article.issue, @author.article) %>

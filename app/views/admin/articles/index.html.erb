@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Issue</th>
+      <th>Title</th>
+      <th>Abstract</th>
+      <th>Has paper?</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.issue %></td>
+        <td><%= article.title %></td>
+        <td><%= article.abstract %></td>
+        <td>
+          <% if article.paper.attached? %>
+          Yes
+          <% else %>
+          No
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', [:admin, article.issue.journal, article.issue, article] %></td>
+        <td><%= link_to 'Edit', edit_admin_journal_issue_article_path(article.issue.journal, article.issue, article) %></td>
+        <td><%= link_to 'Destroy', [:admin, article.issue.journal, article.issue, article], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Article', new_admin_journal_issue_article_path(@issue.journal, @issue) %>

@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Issue:</strong>
+  <%= @article.issue %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Abstract:</strong>
+  <%= @article.abstract %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <% @article.authors.each do |author| %>
+  <%= author.last_name %>
+  <% end %>
+  <br>
+  <%= link_to 'New Author', new_admin_journal_issue_article_author_path(@article.issue.journal, @article.issue, @article) %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <% @article.keywords.each do |keyword| %>
+  <%= keyword.keyword %>
+  <% end %>
+</p>
+<p>
+  <%= link_to 'New keyword', new_admin_journal_issue_article_keyword_path(@article.issue.journal, @article.issue, @article) %>
+</p>
+<p>
+  <strong>Upload Paper:</strong>
+ <% if @article.paper.attached? %>
+ Yes
+ <% else %>
+ No
+ <% end %>
+</p>
+
+<%= link_to 'Edit', edit_admin_journal_issue_article_path(@article.issue.journal, @article.issue, @article) %> |
+<%= link_to 'Back', admin_journal_issue_articles_path(@article.issue.journal, @article.issue) %>

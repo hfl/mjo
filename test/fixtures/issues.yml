@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  journal: one
+  volume: MyString
+  number: MyString
+  year: MyString
+
+two:
+  journal: two
+  volume: MyString
+  number: MyString
+  year: MyString

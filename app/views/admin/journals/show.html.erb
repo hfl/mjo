@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @journal.name %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @journal.about %>
+</p>
+
+<p>
+  <strong>Issn:</strong>
+  <%= @journal.issn %>
+</p>
+
+<p>
+  <strong>Issues in journal:</strong>
+  <% @journal.issues.each do |issue| %>
+  <%=link_to issue.year + issue.volume + issue.number, [:admin, @journal, issue] %><br>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_admin_journal_path(@journal) %> |
+<%= link_to 'Back', admin_journals_path %> |
+<%= link_to 'New Issue for This Journal', new_admin_journal_issue_path(@journal) %>
