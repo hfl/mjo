@@ -10,23 +10,31 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row">
+    <%= form.label :name, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :about %>
-    <%= form.text_area :about %>
+  <div class="form-group row">
+    <%= form.label :about, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+      <%= form.text_area :about, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :issn %>
-    <%= form.text_field :issn %>
+  <div class="from-group row">
+    <%= form.label :issn, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+      <%= form.text_field :issn, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row">
+    <div class="offset-md-2 col-md-10">
+      <br>
+      <%= form.button class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

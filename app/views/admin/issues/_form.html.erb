@@ -10,33 +10,45 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :journal_id %>
-    <%= form.text_field :journal_id %>
+  <div class="form-group row">
+    <%= form.label :journal_id, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+    <%= form.text_field :journal_id, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :volume %>
-    <%= form.text_field :volume %>
+  <div class="form-group row">
+    <%= form.label :volume, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+    <%= form.text_field :volume, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
+  <div class="form-group row">
+    <%= form.label :number, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+    <%= form.text_field :number, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.text_field :year %>
+  <div class="form-group row">
+    <%= form.label :year, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+    <%= form.text_field :year, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :cover %>
-    <%= form.file_field :cover %>
+  <div class="form-group row">
+    <%= form.label :cover, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+    <%= form.file_field :cover, class: "form-control-file" %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <div class="offset-md-2 col-md-10">
+      <br>
+    <%= form.submit class: "btn btn-primary mb-2" %>
+    </div>
   </div>
 <% end %>
