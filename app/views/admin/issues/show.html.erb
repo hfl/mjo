@@ -1,38 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Cover:</strong>
-  <%= image_tag @issue.cover.variant(resize: "100x100") %>
-</p>
-
-<p>
-  <strong>Journal:</strong>
-  <%= @issue.journal %>
-</p>
-
-<p>
-  <strong>Volume:</strong>
-  <%= @issue.volume %>
-</p>
-
-<p>
-  <strong>Number:</strong>
-  <%= @issue.number %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @issue.year %>
-</p>
-
-<p>
-  <strong>Articles:</strong>
-  <% @issue.articles.each do |article| %>
-  <%= link_to article.title, admin_journal_issue_article_path(@issue.journal, @issue, article) %><br>
-  <% end %>
-  <br>
-  <%= link_to 'New Article', new_admin_journal_issue_article_path(@issue.journal, @issue) %>
-</p>
-
-<%= link_to 'Edit', edit_admin_journal_issue_path(@issue.journal, @issue) %> |
-<%= link_to 'Back', admin_journal_issues_path(@issue.journal) %>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-file"></i>
+    卷期详细信息
+  </div>
+  <div class="card-body">
+    <div class="media">
+      <%= image_tag @issue.cover.variant(resize: "100x100"), class: 'mr-3' %>
+      <div class="media-body">
+        <h5 class="mt-0"> <%= @issue.journal.name %> <%= @issue.year %>, Vol.<%= @issue.volume %>, No.<%=  %><%= @issue.number %></h5>
+        <p>
+          <%= @issue.journal.about %>
+        </p>
+        <p>
+          <strong>此卷期所载文章：</strong>
+          <ul>
+            <% @issue.articles.each do |article| %>
+            <li>
+              <%= link_to article.title, admin_journal_issue_article_path(@issue.journal, @issue, article) %>
+            </li>
+            <% end %>
+          </ul>
+          <%= link_to '新增文章', new_admin_journal_issue_article_path(@issue.journal, @issue), class: 'btn btn-success btn-sm' %>
+        </p>
+      </div>
+    </div>
+    <%= link_to '编辑', edit_admin_journal_issue_path(@issue.journal, @issue) %> |
+    <%= link_to '返回卷期列表', admin_journal_issues_path(@issue.journal) %>
+  </div>
+</div>

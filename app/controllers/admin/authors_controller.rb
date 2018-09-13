@@ -1,5 +1,6 @@
 class Admin::AuthorsController < ApplicationController
   layout 'admin'
+  before_action :authenticate_user!
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   # GET /authors
@@ -7,8 +8,8 @@ class Admin::AuthorsController < ApplicationController
   def index
     journal = Journal.find(params[:journal_id])
     issue = journal.issues.find(params[:issue_id])
-    article = issue.articles.find(params[:article_id])
-    @authors = article.authors.all
+    @article = issue.articles.find(params[:article_id])
+    @authors = @article.authors.all
   end
 
   # GET /authors/1

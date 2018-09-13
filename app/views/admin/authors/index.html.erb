@@ -1,35 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-file"></i>
+    文章“<%= @article.title %>”已著录作者有
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>名字</th>
+            <th>姓氏</th>
+            <th>单位</th>
+            <th>简介</th>
+            <th>顺序</th>
+            <th colspan="3">编辑</th>
+          </tr>
+        </thead>
 
-<h1>Authors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Unit</th>
-      <th>Introduce</th>
-      <th>Order</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @authors.each do |author| %>
-      <tr>
-        <td><%= author.first_name %></td>
-        <td><%= author.last_name %></td>
-        <td><%= author.unit %></td>
-        <td><%= author.introduce %></td>
-        <td><%= author.order %></td>
-        <td><%= link_to 'Show', [:admin, author.article.issue.journal, author.article.issue, author.article, author] %></td>
-        <td><%= link_to 'Edit', edit_admin_journal_issue_article_author_path(author.article.issue.journal, author.article.issue, author.article, author) %></td>
-        <td><%= link_to 'Destroy', [:admin, author.article.issue.journal, author.article.issue, author.article, author], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Author', new_admin_journal_issue_article_author_path %>
+        <tbody>
+          <% @authors.each do |author| %>
+            <tr>
+              <td><%= author.first_name %></td>
+              <td><%= author.last_name %></td>
+              <td><%= author.unit %></td>
+              <td><%= author.introduce %></td>
+              <td><%= author.order %></td>
+              <td><%= link_to 'Show', [:admin, author.article.issue.journal, author.article.issue, author.article, author] %></td>
+              <td><%= link_to 'Edit', edit_admin_journal_issue_article_author_path(author.article.issue.journal, author.article.issue, author.article, author) %></td>
+              <td><%= link_to 'Destroy', [:admin, author.article.issue.journal, author.article.issue, author.article, author], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to 'New Author', new_admin_journal_issue_article_author_path, class: 'btn btn-success btn-sm' %>
+  </div>
+</div>

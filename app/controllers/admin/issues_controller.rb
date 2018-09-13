@@ -1,5 +1,6 @@
 class Admin::IssuesController < ApplicationController
   layout 'admin'
+  before_action :authenticate_user!
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
   # GET /issues

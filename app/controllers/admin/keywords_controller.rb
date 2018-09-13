@@ -1,5 +1,6 @@
 class Admin::KeywordsController < ApplicationController
   layout 'admin'
+  before_action :authenticate_user!
   before_action :set_keyword, only: [:show, :edit, :update, :destroy]
 
   # GET /keywords
@@ -38,7 +39,7 @@ class Admin::KeywordsController < ApplicationController
 
     respond_to do |format|
       if @keyword.save
-        format.html { redirect_to [:admin, @keyword.article.issue.journal, @keyword.article.issue, @keyword.article, @keyword], notice: 'Keyword was successfully created.' }
+        format.html { redirect_to admin_journal_issue_article_keywords_url(@keyword.article.issue.journal, @keyword.article.issue, @keyword.article), notice: '关键词保存成功！' }
         format.json { render :show, status: :created, location: @keyword }
       else
         format.html { render :new }
@@ -52,7 +53,7 @@ class Admin::KeywordsController < ApplicationController
   def update
     respond_to do |format|
       if @keyword.update(keyword_params)
-        format.html { redirect_to [:admin, @keyword.article.issue.journal, @keyword.article.issue, @keyword.article, @keyword], notice: 'Keyword was successfully updated.' }
+        format.html { redirect_to admin_journal_issue_article_keywords_url(@keyword.article.issue.journal, @keyword.article.issue, @keyword.article), notice: '关键词修改成功！' }
         format.json { render :show, status: :ok, location: @keyword }
       else
         format.html { render :edit }

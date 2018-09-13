@@ -11,27 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :issue %>
-    <%= form.text_field :issue_id %>
+  <div class="form-group row">
+    <%= form.label :issue, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+      <%= form.text_field :issue_id, class: "form-control", disabled: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group row">
+    <%= form.label :title, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :abstract %>
-    <%= form.text_area :abstract %>
+  <div class="form-group row">
+    <%= form.label :abstract, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+      <%= form.text_area :abstract, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :paper %>
-    <%= form.file_field :paper %>
+  <div class="form-group row">
+    <%= form.label :paper, class: "col-md-2 col-form-label" %>
+    <div class="col-md-10">
+      <%= form.file_field :paper, class: "form-control-file" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row">
+    <div class="offset-md-2 col-md-10">
+      <%= form.submit class: "btn btn-primary mb-2" %>
+    </div>
   </div>
 <% end %>

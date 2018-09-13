@@ -22,6 +22,8 @@ Rails.application.routes.draw do
         end
       end
     end
+    get 'about', to: 'dashboard#about'
+    get 'help', to: 'dashboard#help' 
     root 'dashboard#index'
   end
 

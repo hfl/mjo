@@ -1,5 +1,14 @@
 <h1>New Keyword</h1>
 
-<%= render 'form', keyword: @keyword %>
 
-<%= link_to 'Back', admin_journal_issue_article_keywords_path(@keyword.article.issue.journal, @keyword.article.issue, @keyword.article) %>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-file"></i>
+    新增关键词
+  </div>
+  <div class="card-body">
+    <%= render 'form', keyword: @keyword %>
+
+    <%= link_to 'Back', admin_journal_issue_article_keywords_path(@keyword.article.issue.journal, @keyword.article.issue, @keyword.article) %>
+  </div>
+</div>

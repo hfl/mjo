@@ -4,4 +4,12 @@ class Admin::DashboardController < ApplicationController
   def index
     @page_title = '起始页'
   end
+
+  def about
+    #code
+  end
+
+  def help
+    #code
+  end
 end

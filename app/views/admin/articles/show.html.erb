@@ -1,46 +1,43 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Issue:</strong>
-  <%= @article.issue %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Abstract:</strong>
-  <%= @article.abstract %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <% @article.authors.each do |author| %>
-  <%= author.last_name %>
-  <% end %>
-  <br>
-  <%= link_to 'New Author', new_admin_journal_issue_article_author_path(@article.issue.journal, @article.issue, @article) %>
-</p>
-
-<p>
-  <strong>Keywords:</strong>
-  <% @article.keywords.each do |keyword| %>
-  <%= keyword.keyword %>
-  <% end %>
-</p>
-<p>
-  <%= link_to 'New keyword', new_admin_journal_issue_article_keyword_path(@article.issue.journal, @article.issue, @article) %>
-</p>
-<p>
-  <strong>Upload Paper:</strong>
- <% if @article.paper.attached? %>
- Yes
- <% else %>
- No
- <% end %>
-</p>
-
-<%= link_to 'Edit', edit_admin_journal_issue_article_path(@article.issue.journal, @article.issue, @article) %> |
-<%= link_to 'Back', admin_journal_issue_articles_path(@article.issue.journal, @article.issue) %>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-file"></i>
+    文章详细信息
+  </div>
+  <div class="card-body">
+    <div class="media">
+      <img class="mr-3" src="..." alt="Generic placeholder image">
+      <div class="media-body">
+        <h5 class="mt-0"> <%= @article.title %>  </h5>
+        <p>
+          <%= link_to icon("fa", "plus"), new_admin_journal_issue_article_author_path(@article.issue.journal, @article.issue, @article) %>
+          作者：
+          <% @article.authors.each do |author| %>
+            <%= author.last_name %>
+          <% end %>
+        </p>
+        <p>
+          <%= link_to icon("fa", "plus"), new_admin_journal_issue_article_keyword_path(@article.issue.journal, @article.issue, @article) %>
+          关键词：
+          <% @article.keywords.each do |keyword| %>
+          <%= keyword.keyword %>
+          <% end %>
+        </p>
+        <p>
+          摘要：<%= @article.abstract %>
+        </p>
+        <p>
+          是否有原文:
+         <% if @article.paper.attached? %>
+         是
+         <% else %>
+         否
+         <% end %>
+        </p>
+        <p>
+          <%= link_to '修改', edit_admin_journal_issue_article_path(@article.issue.journal, @article.issue, @article) %> |
+          <%= link_to '返回文章列表', admin_journal_issue_articles_path(@article.issue.journal, @article.issue) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

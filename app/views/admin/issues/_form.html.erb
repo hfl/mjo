@@ -13,7 +13,7 @@
   <div class="form-group row">
     <%= form.label :journal_id, class: "col-md-2 col-form-label" %>
     <div class="col-md-10">
-    <%= form.text_field :journal_id, class: "form-control" %>
+    <%= form.text_field :journal_id, class: "form-control", disabled: true %>
     </div>
   </div>
 
@@ -45,10 +45,9 @@
     </div>
   </div>
 
-  <div class="actions">
+  <div class="form-group row">
     <div class="offset-md-2 col-md-10">
-      <br>
-    <%= form.submit class: "btn btn-primary mb-2" %>
+      <%= form.submit class: "btn btn-primary mb-2" %>
     </div>
   </div>
 <% end %>

@@ -1,40 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-file"></i>
+    《<%= @journal.name %>》已著录卷期
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>卷</th>
+            <th>期</th>
+            <th>年</th>
+            <th>是否有封面？</th>
+            <th colspan="3">编辑</th>
+          </tr>
+        </thead>
 
-<h1>Issues</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Journal</th>
-      <th>Volume</th>
-      <th>Number</th>
-      <th>Year</th>
-      <th>Cover</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @issues.each do |issue| %>
-      <tr>
-        <td><%= issue.journal.id %></td>
-        <td><%= issue.volume %></td>
-        <td><%= issue.number %></td>
-        <td><%= issue.year %></td>
-        <td><% if issue.cover.attached? %>
-          Y
-          <% else %>
-          N
+        <tbody>
+          <% @issues.each do |issue| %>
+            <tr>
+              <td><%= issue.volume %></td>
+              <td><%= issue.number %></td>
+              <td><%= issue.year %></td>
+              <td><% if issue.cover.attached? %>
+                是
+                <% else %>
+                否
+                <% end %>
+              </td>
+              <td><%= link_to '查看', admin_journal_issue_path(issue.journal, issue) %></td>
+              <td><%= link_to '修改', edit_admin_journal_issue_path(issue.journal, issue) %></td>
+              <td><%= link_to '删除', admin_journal_issue_path(issue.journal, issue), method: :delete, data: { confirm: '确认要删除么？' } %></td>
+            </tr>
           <% end %>
-        </td>
-        <td><%= link_to 'Show', admin_journal_issue_path(issue.journal, issue) %></td>
-        <td><%= link_to 'Edit', edit_admin_journal_issue_path(issue.journal, issue) %></td>
-        <td><%= link_to 'Destroy', admin_journal_issue_path(issue.journal, issue), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Issue', new_admin_journal_issue_path(@journal) %>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to '新增卷期', new_admin_journal_issue_path(@journal), class: 'btn btn-success btn-sm' %>
+  </div>
+</div>

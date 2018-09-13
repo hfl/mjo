@@ -1,5 +1,6 @@
 class Admin::JournalsController < ApplicationController
   layout 'admin'
+  before_action :authenticate_user!
   before_action :set_journal, only: [:show, :edit, :update, :destroy]
 
   # GET /journals

@@ -1,33 +1,27 @@
 <div class="card mb-3">
   <div class="card-header">
     <i class="fas fa-file"></i>
-    期刊
+    期刊信息
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <dl>
-        <dt>期刊名</dt>
-        <dd><%= @journal.name %></dd>
-
-        <dt>简介</dt>
+        <dt><%= @journal.name %></dt>
         <dd><%= @journal.about %></dd>
-
-        <dt>ISSN</dt>
-        <dd><%= @journal.issn %></dd>
-
-        <dt>此期刊已著录卷期：</dt>
-        <dd>
+        <dd>ISSN: <%= @journal.issn %></dd>
+        <dd>此期刊已著录卷期：
           <% @journal.issues.each do |issue| %>
-        <%=link_to issue.year + issue.volume + issue.number, [:admin, @journal, issue] %><br>
+        <%=link_to issue.year + "，" + issue.volume + "，" + issue.number, [:admin, @journal, issue] %>；
         <% end %>
         </dd>
       </dl>
       <p>
-      <%= link_to '编辑', edit_admin_journal_path(@journal) %> |
-      <%= link_to '返回', admin_journals_path %> <br>
-      <%= link_to '新增此期刊所属卷期', new_admin_journal_issue_path(@journal) %>
+      <%= link_to '编辑', edit_admin_journal_path(@journal) %> | <%= link_to '返回', admin_journals_path %>
+      </p>
+      <p>
+        <%= link_to '新增此期刊所属卷期', new_admin_journal_issue_path(@journal), class: 'btn btn-success btn-sm' %>
       </p>
     </div>
   </div>
-  <div class="card-footer small text-muted">最后更新于 11:59 PM</div>
+  <div class="card-footer small text-muted">最后更新于 <%= @journal.updated_at.localtime %></div>
 </div>
